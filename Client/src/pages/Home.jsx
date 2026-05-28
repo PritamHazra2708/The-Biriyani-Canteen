@@ -207,7 +207,7 @@ function Home() {
           {/* LEFT SIDE - Larger text on mobile */}
           <div className="text-center lg:text-left animate-slide-up">
             <div className="inline-block bg-yellow-400 text-black px-4 sm:px-5 py-2 rounded-full font-bold mb-4 sm:mb-6 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer text-xs sm:text-sm md:text-base">
-              🍛 India's Smart Canteen
+              India's Smart Canteen
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
@@ -232,15 +232,10 @@ function Home() {
               <Link to="/menu">
                 <button className="group px-8 sm:px-10 py-4 sm:py-4 rounded-full bg-yellow-400 text-black font-black text-base sm:text-lg shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-yellow-500/50 relative overflow-hidden cursor-pointer w-full sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    ORDER NOW 🍛
+                    ORDER NOW 
                     <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
                   </span>
                   <div className="absolute inset-0 bg-yellow-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                </button>
-              </Link>
-              <Link to="/menu">
-                <button className="px-8 sm:px-10 py-4 sm:py-4 rounded-full border-2 border-pink-200 text-white font-bold transition-all duration-300 hover:bg-pink-500 hover:scale-105 hover:shadow-lg cursor-pointer w-full sm:w-auto text-base sm:text-lg">
-                  VIEW MENU
                 </button>
               </Link>
             </div>
