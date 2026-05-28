@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { apiPath, wsPath } from "../config/api";
 import { Link } from "react-router-dom";
 import { FaHome, FaArrowLeft, FaSync, FaFilter, FaTimes } from "react-icons/fa";
 import MenuCard from "../components/MenuCard";
@@ -21,7 +22,7 @@ function Menu() {
     const connectWebSocket = () => {
       try {
         // Connect to WebSocket (adjust port as needed)
-        const ws = new WebSocket("ws://127.0.0.1:5000/ws/menu");
+        const ws = new WebSocket(wsPath("/ws/menu"));
         
         ws.onopen = () => {
           console.log("WebSocket connected for real-time menu updates");
@@ -67,7 +68,7 @@ function Menu() {
     
     try {
       setError(null);
-      const res = await axios.get("http://127.0.0.1:5000/api/menu");
+      const res = await axios.get(apiPath("/api/menu"));
       
       const menuData = Array.isArray(res.data) ? res.data : [];
       setMenu(menuData);

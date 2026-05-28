@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useState } from "react";
 import axios from "axios";
+import { apiPath } from "../config/api";
 import { FaUser, FaEnvelope, FaLock, FaCheckCircle, FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Register() {
@@ -57,7 +58,7 @@ function Register() {
     setIsLoading(true);
 
     const res = await axios.post(
-      "http://localhost:5000/api/auth/send-otp",
+      apiPath("/api/auth/send-otp"),
       {
 
         name: formData.fullName,
@@ -95,7 +96,7 @@ function Register() {
     setIsLoading(true);
 
     const res = await axios.post(
-      "http://localhost:5000/api/auth/verify-otp",
+      apiPath("/api/auth/verify-otp"),
       {
 
         email: formData.email,

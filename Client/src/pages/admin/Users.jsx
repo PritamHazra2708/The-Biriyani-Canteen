@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { apiPath } from "../../config/api";
 
 function Users() {
 
@@ -10,7 +11,7 @@ function Users() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/auth/users"
+        apiPath("/api/auth/users")
       );
 
       setUsers(res.data);

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { apiPath } from "../config/api";
 
 
 function Login() {
@@ -104,7 +105,7 @@ function Login() {
   }
 
   const res = await axios.post(
-    "http://localhost:5000/api/auth/login",
+    apiPath("/api/auth/login"),
     formData
   );
 

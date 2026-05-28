@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { apiPath } from "../config/api";
 import { 
   FaClock, 
   FaRupeeSign, 
@@ -32,7 +33,7 @@ function OrderHistory() {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/orders");
+      const res = await axios.get(apiPath("/api/orders"));
       const userOrders = res.data.filter(
         (order) => order.userId?.toString() === user?.id
       );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { apiPath } from "../../config/api";
 import {
   FaSearch,
   FaClock,
@@ -32,7 +33,7 @@ function Orders() {
   // FETCH ORDERS
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/orders");
+      const res = await axios.get(apiPath("/api/orders"));
       const sortedOrders = res.data.sort((a, b) => b.tokenNo - a.tokenNo);
       setOrders(sortedOrders);
       setFilteredOrders(sortedOrders);
@@ -69,7 +70,7 @@ function Orders() {
   const updateStatus = async (id, status) => {
     setUpdatingId(id);
     try {
-      await axios.put(`http://localhost:5000/api/orders/${id}`, { status });
+      await axios.put(apiPath(`/api/orders/${id}`), { status });
       await fetchOrders();
     } catch (error) {
       console.log(error);

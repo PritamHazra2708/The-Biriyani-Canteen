@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { apiPath } from "../../config/api";
 
 import {
   FaUsers,
@@ -21,17 +22,17 @@ function Dashboard() {
 
       const ordersRes =
         await axios.get(
-          "http://localhost:5000/api/orders"
+          apiPath("/api/orders")
         );
 
       const usersRes =
         await axios.get(
-          "http://localhost:5000/api/auth/users"
+          apiPath("/api/auth/users")
         );
 
       const menuRes =
         await axios.get(
-          "http://localhost:5000/api/menu"
+          apiPath("/api/menu")
         );
 
       setOrders(ordersRes.data);

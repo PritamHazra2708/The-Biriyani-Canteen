@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { apiPath } from "../../config/api";
 import { useDropzone } from "react-dropzone";
 import { 
   FaPlus, 
@@ -55,7 +56,7 @@ function MenuAdmin() {
 
   const fetchMenu = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/menu");
+      const res = await axios.get(apiPath("/api/menu"));
       setMenu(res.data);
       setFilteredMenu(res.data);
       setLoading(false);
@@ -93,7 +94,7 @@ function MenuAdmin() {
 
   const toggleAvailability = async (id, currentStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/menu/${id}`, {
+      await axios.put(apiPath(`/api/menu/${id}`), {
         available: !currentStatus,
       });
       fetchMenu();
@@ -106,7 +107,7 @@ function MenuAdmin() {
     const newPrice = prompt("Enter New Price:", currentPrice);
     if (!newPrice || isNaN(newPrice)) return;
     try {
-      await axios.put(`http://localhost:5000/api/menu/${id}`, {
+      await axios.put(apiPath(`/api/menu/${id}`), {
         price: Number(newPrice),
       });
       fetchMenu();
@@ -122,9 +123,9 @@ function MenuAdmin() {
     }
     try {
       if (editingItem) {
-        await axios.put(`http://localhost:5000/api/menu/${editingItem._id}`, newItem);
+        await axios.put(apiPath(`/api/menu/${editingItem._id}`), newItem);
       } else {
-        await axios.post("http://localhost:5000/api/menu", newItem);
+        await axios.post(apiPath("/api/menu"), newItem);
       }
       setShowModal(false);
       setEditingItem(null);
@@ -148,7 +149,7 @@ function MenuAdmin() {
     const confirmDelete = window.confirm("Are you sure you want to delete this item?");
     if (!confirmDelete) return;
     try {
-      await axios.delete(`http://localhost:5000/api/menu/${id}`);
+      await axios.delete(apiPath(`/api/menu/${id}`));
       fetchMenu();
     } catch (error) {
       console.log(error);

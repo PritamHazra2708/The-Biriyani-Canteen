@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import axios from "axios";
+import { apiPath } from "../config/api";
 import { useState, useEffect } from "react";
 import { FaTrash, FaPlus, FaMinus, FaShoppingBag, FaRupeeSign, FaSpinner, FaHome, FaArrowLeft } from "react-icons/fa";
 import { MdFastfood, MdDeliveryDining } from "react-icons/md";
@@ -38,7 +39,7 @@ function Cart() {
       };
 
       const res = await axios.post(
-        "http://localhost:5000/api/orders",
+        apiPath("/api/orders"),
         orderData
       );
 
