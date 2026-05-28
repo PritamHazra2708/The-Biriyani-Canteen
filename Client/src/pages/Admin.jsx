@@ -27,7 +27,6 @@ function Admin() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -192,7 +191,7 @@ function Admin() {
       {/* MAIN CONTENT - Scrollable area */}
       <div className="flex-1 flex flex-col overflow-hidden w-full">
         
-        {/* Top Navigation Bar - NOW SCROLLS WITH CONTENT (removed sticky) */}
+        {/* Top Navigation Bar */}
         <div className="bg-black/50 backdrop-blur-xl border-b border-white/10">
           <div className="flex items-center justify-between px-6 py-4">
             
@@ -204,22 +203,8 @@ function Admin() {
               {mobileMenuOpen ? <FaTimes /> : <FaBars />}
             </button>
 
-            {/* Search Bar */}
-            <div className="flex-1 max-w-md mx-4 hidden md:block">
-              <div className="relative">
-                <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-                <input
-                  type="text"
-                  placeholder="Search orders, menu items..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-yellow-400/50 transition-all"
-                />
-              </div>
-            </div>
-
             {/* Right Section */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 ml-auto">
               {/* Date & Time */}
               <div className="hidden md:block text-right">
                 <p className="text-white/60 text-xs">{currentTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
